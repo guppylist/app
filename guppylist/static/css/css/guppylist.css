@@ -1,0 +1,207 @@
+/* Template */
+/* line 2, ../sass/base.scss */
+header {
+  background: #003965 url("/static/images/template/header_glow.png") no-repeat;
+  background-position: center;
+  color: #ffffff;
+  padding: 15px 0px 15px 0px;
+}
+/* line 8, ../sass/base.scss */
+header .navigation {
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+/* line 12, ../sass/base.scss */
+header .navigation li {
+  display: inline;
+  margin-right: 18px;
+}
+/* line 17, ../sass/base.scss */
+header .navigation li.last {
+  margin-right: 0px;
+}
+/* line 22, ../sass/base.scss */
+header a, header a:visited {
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+/* line 28, ../sass/base.scss */
+header a:hover {
+  color: #aa0000;
+}
+/* line 32, ../sass/base.scss */
+header .contact-info {
+  margin: -17px 3px 0px 0px;
+}
+
+/* line 37, ../sass/base.scss */
+article {
+  padding: 5px 0px 15px 0px;
+}
+
+/* line 41, ../sass/base.scss */
+footer {
+  background: #2E3030;
+  color: #999999;
+  padding: 15px 0px 15px 0px;
+}
+/* line 46, ../sass/base.scss */
+footer a, footer a:hover, footer a:visited {
+  color: #ffffff;
+}
+
+/* Overrides */
+/* line 52, ../sass/base.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0px;
+}
+
+/* line 55, ../sass/base.scss */
+h1.title, h2.title, h3.title, h4.title, h5.title, h6.title {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  line-height: 1em;
+}
+
+/* line 61, ../sass/base.scss */
+a {
+  color: #aa0000;
+}
+
+/* line 65, ../sass/base.scss */
+hr {
+  margin: 10px 0px 10px 0px;
+}
+
+/* Chrome */
+/* line 70, ../sass/base.scss */
+.chrome {
+  font-weight: bold;
+  background-color: #efefef;
+  border-top: 1px solid #dedede;
+  border-bottom: 2px solid #bcbcbc;
+  padding: 5px 5px 5px 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  line-height: 1em;
+}
+
+/* line 80, ../sass/base.scss */
+h1.chrome {
+  font-size: 1.5em;
+}
+
+/* line 83, ../sass/base.scss */
+h2.chrome {
+  font-size: 1.2em;
+}
+
+/* line 86, ../sass/base.scss */
+h3.chrome {
+  font-size: 0.9em;
+}
+
+/* line 89, ../sass/base.scss */
+h4.chrome {
+  font-size: 0.8em;
+}
+
+/* Lists */
+/* line 94, ../sass/base.scss */
+ul.list {
+  margin: 0px;
+  list-style: none;
+  display: inline-block;
+  width: 100%;
+}
+/* line 100, ../sass/base.scss */
+ul.list li {
+  clear: both;
+  float: left;
+  width: 100%;
+}
+
+/* line 106, ../sass/base.scss */
+ul.list li.list-itme, .list-item {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #dcdcdc;
+}
+
+/* line 111, ../sass/base.scss */
+.list-item.last {
+  border-bottom: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+/* UI Helpers */
+/* line 118, ../sass/base.scss */
+.rounded-corners {
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+/* Images */
+/* line 124, ../sass/base.scss */
+.image-main {
+  -moz-box-shadow: 0px 3px 7px 0px #666666;
+  -webkit-box-shadow: 0px 3px 7px 0px #666666;
+  box-shadow: 0px 3px 7px 0px #666666;
+}
+
+/* line 129, ../sass/base.scss */
+.image-medium {
+  -moz-box-shadow: 0px 2px 5px 0px #666666;
+  -webkit-box-shadow: 0px 2px 5px 0px #666666;
+  box-shadow: 0px 2px 5px 0px #666666;
+}
+
+/* line 134, ../sass/base.scss */
+.image-small {
+  -moz-box-shadow: 0px 1px 3px 0px #666666;
+  -webkit-box-shadow: 0px 1px 3px 0px #666666;
+  box-shadow: 0px 1px 3px 0px #666666;
+}
+
+/* line 139, ../sass/base.scss */
+.image-thumb {
+  -moz-box-shadow: 0px 1px 2px 0px #666666;
+  -webkit-box-shadow: 0px 1px 2px 0px #666666;
+  box-shadow: 0px 1px 2px 0px #666666;
+}
+
+/* Homepage */
+/* line 4, ../sass/guppylist.scss */
+#main-story {
+  position: relative;
+  margin-bottom: 15px;
+}
+/* line 8, ../sass/guppylist.scss */
+#main-story .title-bar {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px 15px 10px 15px;
+  position: absolute;
+  bottom: 30px;
+  right: 0px;
+  -moz-box-shadow: 0px 1px 3px 0px #ffffff;
+  -webkit-box-shadow: 0px 1px 3px 0px #ffffff;
+  box-shadow: 0px 1px 3px 0px #ffffff;
+}
+/* line 18, ../sass/guppylist.scss */
+#main-story .title-bar a {
+  text-decoration: none;
+  color: #ffffff;
+}
+/* line 23, ../sass/guppylist.scss */
+#main-story .title-bar .title {
+  color: #ffffff;
+  font-size: 1.9em;
+  margin-bottom: 3px;
+}
+/* line 29, ../sass/guppylist.scss */
+#main-story .title-bar .teaser {
+  color: #ffffff;
+  font-size: 1em;
+}

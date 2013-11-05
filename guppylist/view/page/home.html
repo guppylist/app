@@ -1,0 +1,123 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>guppylist</title>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            jQuery(document).ready(function($){
+                jQuery.fn.extend({
+                    ensureLoad: function(handler) {
+                        return this.each(function() {
+                            if(this.complete) {
+                                handler.call(this);
+                            } else {
+                                $(this).load(handler);
+                            }
+                        });
+                    }
+                });
+
+                //Ensure Background load
+                var $full = $(".fullscreen");
+                var fullW = 0;
+                var fullH = 0;
+                $full.ensureLoad(function(){
+                    fullW = $full.width();
+                    fullH = $full.height();
+
+                    resize();
+                    $(window).resize(resize);
+                });
+
+                function resize(){
+                    var windowW = $(window).width();
+                    var windowH = $(window).height()+100;
+
+
+                    //Fullscreen
+                    var w = fullW;
+                    var h = fullH;
+                    var l = 0;
+                    var t = 0;
+
+                    var ratio = windowW / fullW;
+                    w *= ratio;
+                    h *= ratio;
+                    t = (h-windowH)/2;
+
+                    if(h < windowH){
+                        ratio = windowH / fullH;
+                        w = fullW*ratio;
+                        h = fullH*ratio;
+
+                        t = 0;
+                        l = (w-windowW)/2;
+                    }
+
+                    $full.css({
+                        "width": w+"px",
+                        "height": h+"px",
+                        "top": -Math.round(t)+"px",
+                        "left": -Math.round(l)+"px"
+                    });
+                }
+
+            });
+        </script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', '{{ google_analytics_id }}', 'guppylist.com');
+          ga('send', 'pageview');
+        </script>
+        <style>
+            body{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            .fullscreen{
+                position: fixed;
+            }
+
+            .form {
+                vertical-align: middle;
+                padding: 25px;
+                width: 300px;
+                height: 300px;
+                background: #ffffff;
+                position: absolute;
+                right: 0px;
+                margin: 0px;
+            }
+
+            .container {
+                margin: -100px auto 0;
+                position: relative;
+                top: 50%;
+                width: 900px;
+            }
+        </style>
+    </head>
+
+    <body>
+    <img class="fullscreen" src="{{ STATIC_URL }}/images/page/home/gift-for-you.jpg">
+    <div class="container">
+        <div class="form">
+            Get <i>exactly</i> what you want this holiday season.
+            <form>
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
+    </div>
+    </body>
+</html>
+ -->

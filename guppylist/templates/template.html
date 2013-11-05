@@ -1,0 +1,52 @@
+{% extends 'meta.html' %}
+
+{% block body %}
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <div id="logo"><a href="/"><img src="{{ STATIC_URL }}images/template/logo_type.png"></a></div>
+                </div>
+                <div class="span8">
+                    <ul class="navigation pull-right">
+                        <!-- <li><a href="/principals-corner">Principal's Corner</a></li> -->
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/calendar">Calendar</a></li>
+                        <li><a href="http://meadowspta.org/">PTA</a></li>
+                        <li class="last"><a href="/food/menu">Food Services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <article>
+                        {% block template %}
+                        {% endblock template %}
+                    </article>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <ul class="list">
+                    </ul>
+                    <hr />
+
+                    <ul class="list">
+                    </ul>
+                </div>
+                <div class="span4">
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock body %}

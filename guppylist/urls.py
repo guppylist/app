@@ -4,5 +4,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'guppylist.contrib.page.views.home'),
+    # url(r'^search/' include('guppylist.contrib.search.urls')),
+    # url(r'^$', 'guppylist.contrib.page.views.home'),
 )

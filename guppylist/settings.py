@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'guppylist.contrib.page',
     'guppylist.contrib.list',
+    'guppylist.contrib.search',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -174,3 +175,7 @@ if ENVIRONMENT is 'PRODUCTION':
     GOOGLE_ANALYTICS_ID = 'UA-45455558-1'
 else:
     GOOGLE_ANALYTICS_ID = 'UA-45455558-1'
+
+AMAZON_ACCESS_KEY_ID = '11EMXM1MGZR6D3CKRK02'
+AMAZON_SECRET_ACCESS_KEY = 'yL3RZBWZQKYs28GcSFyT/Aalic2HOTWLzNqBgsVK'
+AMAZON_ASSOCIATES_ID = 'guplis-20'

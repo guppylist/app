@@ -1,5 +1,15 @@
-{% extends 'layouts/sidebar_right.html' %}
+{% extends 'layouts/full.html' %}
 
 {% block content %}
-    [asdf]
+    <div id="search-page">
+        <section>
+            <ul class="grid">
+                {% for product in products %}
+                    <li class="grid-item" style="background: url('{{ product.data.large_image_url }}') left center no-repeat; background-size: 200px auto;">
+                        <a href="/product/{{ product.slug }}?q={{ q }}" data-toggle="popover" data-trigger="hover" data-animation="false" title="{{ product.data.title }}" data-placement="{% if forloop.counter|divisibleby:4 %}left{% else %}right{% endif %}"></a>
+                    </li>
+                {% endfor %}
+            </li>
+        </section>
+    </div>
 {% endblock content %}

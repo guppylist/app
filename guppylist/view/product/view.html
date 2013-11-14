@@ -1,0 +1,119 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+    <a href="#addOwn" role="button" class="btn btn-success btn-large btn-block" data-toggle="modal">I Have This</a>
+    <a href="#addToList" role="button" class="btn btn-success btn-large btn-block" data-toggle="modal">I Want This</a>
+    <a href="{{ product.data.offer_url }}" class="btn btn-large btn-block" target="_blank">View On Amazon.com</a>
+{% endblock sidebar %}
+
+{% block content %}
+    <div id="product-page">
+        <article>
+            <img src="{{ product.data.large_image_url }}">
+            <h1>{{ product.data.title }}</h1>
+
+            <hr />
+
+            <form action="/list/add/submit/" method="post">
+                <div id="addToList" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Add To A List</h3>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="span3">
+                            <img src="{{ product.data.large_image_url }}"><br />
+                            <b>{{ product.data.title }}</b>
+                        </div>
+                        <div class="span5">
+                            <div class="tabbable">
+                                {% if lists|length = 0 %}
+                                    <h4>Create A New List</h4>
+                                    <div class="new-list-fields">
+                                        <div>{{ form.title }}</div>
+                                        <div>{{ form.description }}</div>
+                                    </div>
+                                {% else %}
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#existingList" data-toggle="tab">Existing Lists</a></li>
+                                        <li><a href="#newList" data-toggle="tab">Create A New List</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="existingList">
+                                            <div class="existin-lists-fields">
+                                                {% for list in lists %}
+                                                    <div class="existing-list-item">
+                                                        <input type="checkbox" id="list-{{ list.id }}"> <label for="list-{{ list.id }}">{{ list.title }}</label>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="newList">
+                                            <div class="new-list-fields">
+                                                <div>{{ form.title }}</div>
+                                                <div>{{ form.description }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <hr />
+
+                            <h4>Notes</h4>
+                            <div class="notes-fields">
+                                <div>{{ form.notes }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Add">
+                    </div>
+                </div>
+            </form>
+
+            <strong>api:</strong> {{ product.data.api }}<br />
+            <strong>asin:</strong> {{ product.data.asin }}<br />
+            <strong>author:</strong> {{ product.data.author }}<br />
+            <strong>authors:</strong> {{ product.data.authors }}<br />
+            <strong>aws_associate_tag:</strong> {{ product.data.aws_associate_tag }}<br />
+            <strong>binding:</strong> {{ product.data.binding }}<br />
+            <strong>brand:</strong> {{ product.data.brand }}<br />
+            <strong>browse_nodes:</strong> {{ product.data.browse_nodes }}<br />
+            <strong>ean:</strong> {{ product.data.ean }}<br />
+            <strong>edition:</strong> {{ product.data.edition }}<br />
+            <strong>editorial_review:</strong> {{ product.data.editorial_review }}<br />
+            <strong>eisbn:</strong> {{ product.data.eisbn }}<br />
+            <strong>features:</strong> {{ product.data.features }}<br />
+            <strong>get_attribute:</strong> {{ product.data.get_attribute }}<br />
+            <strong>get_attribute_details:</strong> {{ product.data.get_attribute_details }}<br />
+            <strong>get_attributes:</strong> {{ product.data.get_attributes }}<br />
+            <strong>isbn:</strong> {{ product.data.isbn }}<br />
+            <strong>item:</strong> {{ product.data.item }}<br />
+            <strong>label:</strong> {{ product.data.label }}<br />
+            <strong>large_image_url:</strong> {{ product.data.large_image_url }}<br />
+            <strong>list_price:</strong> {{ product.data.list_price }}<br />
+            <strong>manufacturer:</strong> {{ product.data.manufacturer }}<br />
+            <strong>medium_image_url:</strong> {{ product.data.medium_image_url }}<br />
+            <strong>model:</strong> {{ product.data.model }}<br />
+            <strong>mpn:</strong> {{ product.data.mpn }}<br />
+            <strong>offer_url:</strong> {{ product.data.offer_url }}<br />
+            <strong>pages:</strong> {{ product.data.pages }}<br />
+            <strong>parent:</strong> {{ product.data.parent }}<br />
+            <strong>parent_asin:</strong> {{ product.data.parent_asin }}<br />
+            <strong>part_number:</strong> {{ product.data.part_number }}<br />
+            <strong>price_and_currency:</strong> {{ product.data.price_and_currency }}<br />
+            <strong>publication_date:</strong> {{ product.data.publication_date }}<br />
+            <strong>publisher:</strong> {{ product.data.publisher }}<br />
+            <strong>region:</strong> {{ product.data.region }}<br />
+            <strong>release_date:</strong> {{ product.data.release_date }}<br />
+            <strong>reviews:</strong> {{ product.data.reviews }}<br />
+            <strong>sku:</strong> {{ product.data.sku }}<br />
+            <strong>small_image_url:</strong> {{ product.data.small_image_url }}<br />
+            <strong>tiny_image_url:</strong> {{ product.data.tiny_image_url }}<br />
+            <strong>title:</strong> {{ product.data.title }}<br />
+            <strong>upc:</strong> {{ product.data.upc }}<br />
+        </article>
+    </div>
+{% endblock content %}

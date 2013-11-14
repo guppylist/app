@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 ACTION_SAVE_INSERT = 'insert'
 ACTION_SAVE_UPDATE = 'update'
@@ -52,6 +53,9 @@ class ContentModel(BaseModel):
     create_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=True)
+
+    def before_save(self, action):
+        self.slug = slugify(self.title)
 
     class Meta:
         abstract = True

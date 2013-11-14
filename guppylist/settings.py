@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'guppylist.contrib.page',
     'guppylist.contrib.list',
     'guppylist.contrib.search',
+    'guppylist.contrib.product',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -177,5 +178,5 @@ else:
     GOOGLE_ANALYTICS_ID = 'UA-45455558-1'
 
 AMAZON_ACCESS_KEY_ID = '11EMXM1MGZR6D3CKRK02'
-AMAZON_SECRET_ACCESS_KEY = 'yL3RZBWZQKYs28GcSFyT/Aalic2HOTWLzNqBgsVK'
-AMAZON_ASSOCIATES_ID = 'guplis-20'
+AMAZON_SECRET_KEY = 'yL3RZBWZQKYs28GcSFyT/Aalic2HOTWLzNqBgsVK'
+AMAZON_ASSOCIATE_ID = 'guplis-20'

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from guppylist.core.models import ContentModel, BaseModel
 from guppylist.contrib.product.models import Product
 
@@ -11,7 +12,17 @@ class List(ContentModel):
 
         # lists = List.objects.get(user=user, product)
 
+    def get_absolute_url(self):
+        return '/u/caleb/list/%s' % self.slug
+
+    def product_is_in_list(self):
+        return True
+
 class ListProducts(BaseModel):
     product = models.ForeignKey(Product, null=False)
     list = models.ForeignKey(List, null=False)
+    user = models.ForeignKey(User, null=False)
+    claimer = models.ForeignKey(User, null=True, related_name='claimer')
+    notes = models.TextField(null=True, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)

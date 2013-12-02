@@ -6,7 +6,6 @@
 # file for more information.
 #
 
-
 # Change this to :production when ready to deploy the CSS to the live server.
 environment = :development
 #environment = :production

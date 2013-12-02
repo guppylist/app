@@ -1,16 +1,29 @@
+import json
 from django.conf import settings
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from guppylist.contrib.product.models import Product
+from guppylist.contrib.list.views import add_form
 from guppylist.contrib.list.models import List
-from guppylist.contrib.list.forms import ListForm
+from guppylist.contrib.list.forms import ListAddNewForm, ListAddExistingForm
 
 def view(request, slug):
-    form = ListForm()
-    product = Product.get_product(slug)
+    product = Product.get_product_by_slug(slug)
     lists = List.objects.filter(user=request.user)
-    request.page_title = product.data.title
+    add_product_to_list_form = add_form(request, product, lists).content
 
-    payload = dict(product=product, form=form, lists=lists)
+    # Add request elements for the template.
+    request.page_title = product.data.title
+    request.scripts['list'] = {
+        'productId': int(product.id),
+        'addProductToListForm': json.dumps(add_product_to_list_form),
+        'lists': json.dumps([{'id': list.id, 'title': list.title} for list in lists]),
+    }
+
+    payload = dict(
+        product=product,
+        add_product_to_list_form=add_product_to_list_form,
+        lists=lists,
+    )
     return render_to_response('product/view.html', payload, context_instance=RequestContext(request))

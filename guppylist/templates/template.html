@@ -5,23 +5,26 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="brand" href="#"><strong>guppy</strong>:list</a>
-                    <form class="search-form" action="/search" method="get">
-                        <div class="input-append">
-                            <input id="search-field" class="span6" type="text" name="q" value="{{ q }}" placeholder="Search products" autocomplete="off">
-                            <input id="search-button" type="submit" class="btn btn-success" value="Go!">
+                    <div class="row">
+                        <div class="span8">
+                            <a class="brand" href="#"><strong>guppy</strong>:list</a>
+                            <form class="search-form" action="/search" method="get">
+                                <div class="input-append">
+                                    <input id="search-field" class="span6" type="text" name="q" value="{{ q }}" placeholder="Search products" autocomplete="off">
+                                    <input id="search-button" type="submit" class="btn btn-success" value="Go!">
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                    <div class="nav-collapse collapse">
-                        <!-- <ul class="nav">
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul> -->
+                        <div class="span4">
+                            <div class="dropdown">
+                                <a href="/u/{{ user.username }}/" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list icon-white"></i> my lists</a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    {% for list in user.profile.get_lists %}
+                                        <li><a href="{{ list.get_absolute_url }}">{{ list.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,16 +47,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="span8">
-                    <ul class="list">
-                    </ul>
-                    <hr />
 
-                    <ul class="list">
-                    </ul>
-                </div>
-                <div class="span4">
-                </div>
             </div>
         </div>
     </footer>

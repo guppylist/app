@@ -11,67 +11,24 @@
         <article>
             <img src="{{ product.data.large_image_url }}">
             <h1>{{ product.data.title }}</h1>
-
             <hr />
 
-            <form action="/list/add/submit/" method="post">
-                <div id="addToList" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3 id="myModalLabel">Add To A List</h3>
+            <div id="addToList" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="ListAddProductFormController">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Add To A List</h3>
+                </div>
+                <div class="modal-body row">
+                    <div class="span3">
+                        <img src="{{ product.data.large_image_url }}"><br />
+                        <b>{{ product.data.title }}</b>
                     </div>
-                    <div class="modal-body row">
-                        <div class="span3">
-                            <img src="{{ product.data.large_image_url }}"><br />
-                            <b>{{ product.data.title }}</b>
-                        </div>
-                        <div class="span5">
-                            <div class="tabbable">
-                                {% if lists|length = 0 %}
-                                    <h4>Create A New List</h4>
-                                    <div class="new-list-fields">
-                                        <div>{{ form.title }}</div>
-                                        <div>{{ form.description }}</div>
-                                    </div>
-                                {% else %}
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#existingList" data-toggle="tab">Existing Lists</a></li>
-                                        <li><a href="#newList" data-toggle="tab">Create A New List</a></li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="existingList">
-                                            <div class="existin-lists-fields">
-                                                {% for list in lists %}
-                                                    <div class="existing-list-item">
-                                                        <input type="checkbox" id="list-{{ list.id }}"> <label for="list-{{ list.id }}">{{ list.title }}</label>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="newList">
-                                            <div class="new-list-fields">
-                                                <div>{{ form.title }}</div>
-                                                <div>{{ form.description }}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <hr />
-
-                            <h4>Notes</h4>
-                            <div class="notes-fields">
-                                <div>{{ form.notes }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                        <input type="submit" class="btn btn-primary" value="Add">
+                    <div class="span5">
+                        <div class="loader" ng-show="loaderShow"><span>Saving...</span></div>
+                        <div compile="listAddForm"></div>
                     </div>
                 </div>
-            </form>
+            </div>
 
             <strong>api:</strong> {{ product.data.api }}<br />
             <strong>asin:</strong> {{ product.data.asin }}<br />

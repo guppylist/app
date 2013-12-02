@@ -10,8 +10,18 @@ class Product(BaseModel):
     create_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
 
+    def get_absolute_url(self):
+        return '/products/%s' % self.slug
+
+    def get_details(self):
+        amazon = AmazonAPI(settings.AMAZON_ACCESS_KEY_ID, settings.AMAZON_SECRET_KEY, settings.AMAZON_ASSOCIATE_ID)
+        product = amazon.lookup(ItemId=self.asin)
+        self.data = product
+
+        return self
+
     @staticmethod
-    def get_product(slug):
+    def get_product_by_slug(slug):
         product = Product.objects.get(slug=slug)
 
         amazon = AmazonAPI(settings.AMAZON_ACCESS_KEY_ID, settings.AMAZON_SECRET_KEY, settings.AMAZON_ASSOCIATE_ID)

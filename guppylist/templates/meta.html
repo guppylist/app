@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="guppylist">
     <head>
         <meta charset="utf-8">
         <title>
@@ -12,13 +12,18 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-cookies.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="{{ STATIC_URL }}libraries/bootstrap/js/bootstrap.min.js"></script>
         <script src="{{ STATIC_URL }}js/guppylist.js"></script>
 
         <link href="{{ STATIC_URL }}libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ STATIC_URL }}css/css/guppylist.css" rel="stylesheet">
+
+        <script>
+            var scripts = {{ scripts|safe }};
+        </script>
 
         <script>
             (function(d, s, id) {

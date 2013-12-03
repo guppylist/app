@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from guppylist.contrib.list.models import List
 
 class ListAddNewForm(forms.Form):
@@ -10,7 +10,7 @@ class ListAddNewForm(forms.Form):
 
 class ListAddExistingForm(forms.Form):
     # Get list choices.
-    user = User.objects.get(id=1)
+    user = get_user_model().objects.get(id=1)
     lists = [(list.id, list.title) for list in List.objects.filter(user=user)]
 
     product_id = forms.CharField(required=True, widget=forms.HiddenInput(attrs={'ng-model': 'form.product_id'}))

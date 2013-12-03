@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -49,7 +50,7 @@ class BaseModel(models.Model):
 class ContentModel(BaseModel):
     title = models.CharField(max_length=255, null=False, blank=False)
     slug = models.SlugField(max_length=255)
-    user = models.ForeignKey(User, null=False, blank=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False)
     create_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=True)

@@ -5,7 +5,7 @@
         <section>
             <ul class="grid">
                 {% for product in products %}
-                    <li class="grid-item" style="background: url('{{ product.data.large_image_url }}') left center no-repeat; background-size: 200px auto;">
+                    <li class="grid-item" style="background: url('{{ product.data.large_image_url }}') left center no-repeat; background-size: 222px auto;">
                         <a href="{{ product.get_absolute_url }}?q={{ q }}" data-toggle="popover" data-trigger="hover" data-animation="false" title="{{ product.data.title }}" data-placement="{% if forloop.counter|divisibleby:4 %}left{% else %}right{% endif %}"></a>
                     </li>
                 {% endfor %}

@@ -4,6 +4,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^facebook/', include('django_facebook.urls')),
+    (r'^accounts/', include('django_facebook.auth_urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('guppylist.contrib.search.urls')),
     url(r'^products/', include('guppylist.contrib.product.urls')),

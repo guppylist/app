@@ -10,16 +10,21 @@ from guppylist.contrib.list.forms import ListAddNewForm, ListAddExistingForm
 
 def view(request, slug):
     product = Product.get_product_by_slug(slug)
-    lists = List.objects.filter(user=request.user)
-    add_product_to_list_form = add_form(request, product, lists).content
+
+    lists = []
+    add_product_to_list_form = ''
+    if request.user.is_authenticated():
+        lists = List.objects.filter(user=request.user)
+        add_product_to_list_form = add_form(request, product, lists).content
+
+        request.scripts['list'] = {
+            'productId': int(product.id),
+            'addProductToListForm': json.dumps(add_product_to_list_form),
+            'lists': json.dumps([{'id': list.id, 'title': list.title} for list in lists]),
+        }
 
     # Add request elements for the template.
     request.page_title = product.data.title
-    request.scripts['list'] = {
-        'productId': int(product.id),
-        'addProductToListForm': json.dumps(add_product_to_list_form),
-        'lists': json.dumps([{'id': list.id, 'title': list.title} for list in lists]),
-    }
 
     payload = dict(
         product=product,

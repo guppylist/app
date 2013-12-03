@@ -42,8 +42,8 @@
             border: 1px solid #dcdcdc;
             display: inline-block;
             overflow: hidden;
-            width: 200px;
-            height: 200px;
+            width: 222px;
+            height: 222px;
             margin: 0px 7px 7px 0px;
 
             a {
@@ -53,6 +53,14 @@
                 height: 100%;
             }
         }
+    }
+}
+
+/* List Page */
+#list-page {
+    h2 {
+        font-size: 18px;
+        line-height: 22px
     }
 }
 

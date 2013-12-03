@@ -7,23 +7,61 @@
                 <div class="container">
                     <div class="row">
                         <div class="span8">
-                            <a class="brand" href="#"><strong>guppy</strong>:list</a>
-                            <form class="search-form" action="/search" method="get">
-                                <div class="input-append">
-                                    <input id="search-field" class="span6" type="text" name="q" value="{{ q }}" placeholder="Search products" autocomplete="off">
-                                    <input id="search-button" type="submit" class="btn btn-success" value="Go!">
+                            <div class="row">
+                                <div class="span2">
+                                    <a class="brand" href="/"><strong>guppy</strong>:list</a>
                                 </div>
-                            </form>
+                                <div class="span6">
+                                    <form class="search-form" action="/search" method="get">
+                                        <div class="input-append">
+                                            <input id="search-field" class="span6" type="text" name="q" value="{{ q }}" placeholder="Search products" autocomplete="off">
+                                            <input id="search-button" type="submit" class="btn btn-success" value="Go!">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="span4">
-                            <div class="dropdown">
-                                <a href="/u/{{ user.username }}/" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list icon-white"></i> my lists</a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    {% for list in user.profile.get_lists %}
-                                        <li><a href="{{ list.get_absolute_url }}">{{ list.title }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                            {% if user.is_authenticated %}
+                                <div class="nav-collapse collapse pull-right">
+                                    <ul class="nav">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon-list icon-white"></i>
+                                                My Lists
+                                                <b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+
+                                            </ul>
+                                            <!-- <ul class="dropdown-menu">
+                                                <li><a href="#">Action</a></li>
+                                                <li><a href="#">Another action</a></li>
+                                                <li><a href="#">Something else here</a></li>
+                                                <li class="divider"></li>
+                                                <li class="nav-header">Nav header</li>
+                                                <li><a href="#">Separated link</a></li>
+                                                <li><a href="#">One more separated link</a></li>
+                                            </ul> -->
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <img class="img-rounded" src="http://graph.facebook.com/{{ user.profile_or_self.facebook_id }}/picture?type=square" title="" width="35" />
+                                                <b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="{% url 'auth_logout' %}">logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <form class="pull-right" action="{% url 'facebook_connect' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ request.path }}" name="next" />
+                                    <input class="facebook-login-button" onclick="F.connect(this.parentNode); return false;" type="image" src="{{ STATIC_URL }}images/template/facebook_login_button.png" />
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

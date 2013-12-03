@@ -1,6 +1,6 @@
 import json
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -9,14 +9,14 @@ from guppylist.contrib.list.forms import ListAddNewForm, ListAddExistingForm
 from guppylist.contrib.product.models import Product
 
 def list(request, username, list_slug):
-    user = User.objects.get(username=username)
+    user = get_user_model().objects.get(username=username)
     list = List.objects.get(user=user, slug=list_slug)
     request.page_title = '%s by %s' % (list.title, user.username)
 
     return render_to_response('list/list.html', dict(list=list), context_instance=RequestContext(request))
 
 def lists(request, username):
-    user = User.objects.get(username=username)
+    user = get_user_model().objects.get(username=username)
     lists = List.objects.all().filter(user=user)
 
     return render_to_response('list/lists.html', dict(lists=lists), context_instance=RequestContext(request))

@@ -15,7 +15,7 @@
                     <img src="{{ item.product.data.medium_image_url}}">
                 </div>
                 <div class="span6">
-                    <h2>{{ item.product.data.title }}</h2>
+                    <a href="{{ item.product.get_absolute_url }}"><h2>{{ item.product.data.title }}</h2></a>
                     {{ item.notes }}
                 </div>
                 <div class="clearfix"></div>

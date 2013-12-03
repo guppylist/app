@@ -116,8 +116,24 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'django_facebook.context_processors.facebook',
     'guppylist.core.context_processors.view_variables',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'django_facebook.auth_backends.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
 
 ROOT_URLCONF = 'guppylist.urls'
 
@@ -138,8 +154,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'guppylist.contrib.user',
-    'guppylist.contrib.page',
+    'django_facebook',
+    # 'guppylist.contrib.page',
     'guppylist.contrib.list',
     'guppylist.contrib.search',
     'guppylist.contrib.product',
@@ -182,3 +198,12 @@ else:
 AMAZON_ACCESS_KEY_ID = '11EMXM1MGZR6D3CKRK02'
 AMAZON_SECRET_KEY = 'yL3RZBWZQKYs28GcSFyT/Aalic2HOTWLzNqBgsVK'
 AMAZON_ASSOCIATE_ID = 'guplis-20'
+
+# Facebook
+if ENVIRONMENT is 'PRODUCTION':
+    FACEBOOK_APP_ID = ''
+    FACEBOOK_APP_SECRET = ''
+else:
+    FACEBOOK_APP_ID = '643622945683473'
+    FACEBOOK_APP_SECRET = '16ff12cf75b5c6410249e3ef483b2527'
+

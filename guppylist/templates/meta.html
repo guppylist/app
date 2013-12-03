@@ -16,23 +16,13 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-cookies.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="{{ STATIC_URL }}libraries/bootstrap/js/bootstrap.min.js"></script>
-        <script src="{{ STATIC_URL }}js/guppylist.js"></script>
+        <script src="{{ STATIC_URL }}js/guppylist.js" type="text/javascript"></script>
 
         <link href="{{ STATIC_URL }}libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ STATIC_URL }}css/css/guppylist.css" rel="stylesheet">
 
         <script>
             var scripts = {{ scripts|safe }};
-        </script>
-
-        <script>
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=193882737326566";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
         </script>
 
         <script>
@@ -61,5 +51,18 @@
         <div id="fb-root"></div>
         {% block body %}
         {% endblock body %}
+
+        <script src="{{ STATIC_URL }}js/facebook.js" type="text/javascript"></script>
+        <script>
+            facebookAppId = '{{ facebook_app_id }}';
+            facebookDefaultScope = ["email", "user_about_me", "user_birthday", "user_website"];
+            staticUrl = '/static/';
+            function facebookJSLoaded(){
+                FB.init({appId: facebookAppId, status: false, cookie: true, xfbml: true, oauth: true});
+            }
+            window.fbAsyncInit = facebookJSLoaded;
+            F = new facebookClass(facebookAppId);
+            F.load();
+        </script>
     </body>
 </html>

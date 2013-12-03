@@ -49,7 +49,7 @@ angular.module('guppylist', ['ngCookies'], function($compileProvider) {
             }
           );
         };
-    })
+    });
 })
 .run( function run( $http, $cookies ){
     // For CSRF token compatibility with Django

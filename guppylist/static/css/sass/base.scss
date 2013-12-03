@@ -7,31 +7,36 @@ header {
     color: #ffffff;
     padding: 20px 0px 15px 0px;
 
-    .navbar-inverse .navbar-inner {
-        background: $primary-color;
-        background-image: -moz-linear-gradient(center top , $primary-color, #2e649e);
+    .navbar-inverse {
+        .navbar-inner {
+            background: $primary-color;
+            background-image: -moz-linear-gradient(center top , $primary-color, #2e649e);
 
-        .brand {
-            font-size: 30px;
-            margin-top: 8px;
-            font-family: sans-serif;
-            color: #ffffff;
-        }
-
-        .nav a {
-            color: #ffffff;
-        }
-
-        .dropdown {
-            font-size: 18px;
-            margin-top: 15px;
-
-            a.dropdown-toggle {
+            .brand {
                 color: #ffffff;
+                height: 35px;
+                line-height: 30px;
+                font-size: 30px;
             }
-            a.dropdown-toggle:hover {
-                text-decoration: none;
+
+            .dropdown-toggle {
+                line-height: 35px;
+                color: #ffffff;
+                padding: 10px;
+
+                .caret {
+                    border-top-color: #ffffff !important;
+                    margin-top: 15px;
+                }
             }
+        }
+
+        .nav li.dropdown.open > .dropdown-toggle {
+            background-color: #2e649e;
+        }
+
+        .facebook-login-button {
+            margin-top: 8px;
         }
     }
 
@@ -84,6 +89,10 @@ a {
 
 hr {
     margin: 10px 0px 10px 0px;
+}
+
+form {
+    margin: 0px;
 }
 
 input[type="radio"], input[type="checkbox"] {

@@ -32,7 +32,9 @@
                                                 <b class="caret"></b>
                                             </a>
                                             <ul class="dropdown-menu">
-
+                                                {% for list in user_lists %}
+                                                    <li><a href="{{ list.get_absolute_url }}">{{ list.title }}</a></li>
+                                                {% endfor %}
                                             </ul>
                                             <!-- <ul class="dropdown-menu">
                                                 <li><a href="#">Action</a></li>

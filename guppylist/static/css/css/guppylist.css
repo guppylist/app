@@ -74,7 +74,7 @@ footer a, footer a:hover, footer a:visited {
 /* Overrides */
 /* line 77, ../sass/base.scss */
 h1, h2, h3, h4, h5, h6 {
-  margin: 0px;
+  margin: 0px 0px 5px 0px;
   padding: 0px;
 }
 

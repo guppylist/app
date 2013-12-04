@@ -74,9 +74,15 @@ function ListAddProductFormController($scope, $http, $cookies) {
         // Existing list select box.
         $scope.lists = eval(scripts.list.lists);
 
+        // Set default form state.
+        var tab = 'existing';
+        if (_.isEmpty($scope.lists)) {
+            tab = 'new';
+        }
+
         // Initialize form.
         $scope.form = {
-            'tab': 'existing',
+            'tab': tab,
             'product_id': scripts.list.productId,
             'list_id': $scope.lists[0],
         };
@@ -90,7 +96,10 @@ function ListAddProductFormController($scope, $http, $cookies) {
         $scope.loaderShow = true;
 
         // Prepare list_id.
-        $scope.form.list_id = $scope.form.list_id.id;
+        if (!_.isEmpty($scope.form.list_id)) {
+            $scope.form.list_id = $scope.form.list_id.id;
+        }
+
         console.log($scope.form);
 
         var url = '/lists/add/new/submit/';

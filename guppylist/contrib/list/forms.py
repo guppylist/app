@@ -9,17 +9,14 @@ class ListAddNewForm(forms.Form):
     notes = forms.CharField(required=False, widget=forms.Textarea(attrs={'placeholder': 'My shoe size is 8 and I like the blue ones.', 'ng-model': 'form.notes'}))
 
 class ListAddExistingForm(forms.Form):
-    # Get list choices.
-    user = get_user_model().objects.get(id=1)
-    lists = [(list.id, list.title) for list in List.objects.filter(user=user)]
-
     product_id = forms.CharField(required=True, widget=forms.HiddenInput(attrs={'ng-model': 'form.product_id'}))
-    list_id = forms.ChoiceField(required=True, choices=lists)
+    # list_id = forms.ChoiceField(required=True, choices=lists)
     notes = forms.CharField(required=False, widget=forms.Textarea(attrs={'placeholder': 'My shoe size is 8 and I like the blue ones.', 'ng-model': 'form.notes'}))
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request', None)
+        self.user = kwargs.pop('user', None)
         super(ListAddExistingForm, self).__init__(*args, **kwargs)
 
-    def get_user(self):
-        print self.request.user
+        # Get list choices.
+        lists = [(list.id, list.title) for list in List.objects.filter(user=self.user)]
+        self.fields['list_id'] = forms.ChoiceField(required=True, choices=lists)

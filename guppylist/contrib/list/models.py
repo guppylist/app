@@ -13,7 +13,7 @@ class List(ContentModel):
         # lists = List.objects.get(user=user, product)
 
     def get_absolute_url(self):
-        return '/u/caleb/list/%s' % self.slug
+        return '/u/%s/list/%s' % (self.user.username, self.slug)
 
     def product_is_in_list(self):
         return True

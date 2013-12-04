@@ -10,6 +10,7 @@
         {% if lists|length = 0 %}
             <h4>Create A New List</h4>
             <div class="new-list-fields">
+                {{ new_form.errors }}
                 <div>
                     {{ new_form.title }}
                     {{ new_form.title.errors }}
@@ -17,26 +18,16 @@
                 <div>{{ new_form.description }}</div>
             </div>
         {% else %}
-            {{ existing_form.errors }}
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#existingList" data-toggle="tab" ng-click="tabClick('existing')">Existing Lists</a></li>
                 <li><a href="#newList" data-toggle="tab" ng-click="tabClick('new')">Create A New List</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="existingList">
-                    <div class="existin-lists-fields">
-                        <select ng-model="form.list_id" ng-options="list.title for list in lists"></select>
+                    {{ existing_form.errors }}
 
-                        {% for list in lists %}
-                        <!--
-                            <div class="existing-list-item">
-                                <label for="list-{{ list.id }}">
-                                    <input id="list-{{ list.id }}" type="checkbox" value="{{ list.id }}" ng-model="form.lists.{{ list.id }}" name="lists">
-                                    {{ list.title }}
-                                </label>
-                            </div>
-                        -->
-                        {% endfor %}
+                    <div class="existing-lists-fields">
+                        <select ng-model="form.list_id" ng-options="list.title for list in lists"></select>
                         {{ existing_form.list_id.errors }}
                     </div>
                 </div>

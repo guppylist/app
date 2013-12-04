@@ -1,4 +1,5 @@
 from django.conf import settings
+from guppylist.contrib.list.models import List
 
 def view_variables(request):
     page_title = ''
@@ -15,7 +16,7 @@ def view_variables(request):
         'page_title': page_title,
         'q': q,
         'scripts': request.scripts,
-        # 'user': User.objects.get(id=request.user.id)
+        'user_lists': List.objects.filter(user=request.user),
     }
 
 def status_messages(request):

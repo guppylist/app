@@ -1,8 +1,10 @@
 {% extends 'layouts/sidebar_right.html' %}
 
 {% block sidebar %}
-    <a href="#addOwn" role="button" class="btn btn-success btn-large btn-block" data-toggle="modal">I Have This</a>
-    <a href="#addToList" role="button" class="btn btn-success btn-large btn-block" data-toggle="modal">I Want This</a>
+    {% if user.is_authenticated %}
+        <a href="#addOwn" role="button" class="btn btn-success btn-large btn-block" data-toggle="modal">I Have This</a>
+        <a href="#addToList" role="button" class="btn btn-success btn-large btn-block" data-toggle="modal">I Want This</a>
+    {% endif %}
     <a href="{{ product.data.offer_url }}" class="btn btn-large btn-block" target="_blank">View On Amazon.com</a>
 {% endblock sidebar %}
 

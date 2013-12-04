@@ -23,7 +23,7 @@ def lists(request, username):
 
 def add_form(request, product, lists):
     new_form = ListAddNewForm(request.POST or None, initial={'product_id': product.id})
-    existing_form = ListAddExistingForm(request.POST or None, initial={'product_id': product.id}, request=request)
+    existing_form = ListAddExistingForm(request.POST or None, initial={'product_id': product.id}, user=request.user)
 
     payload = dict(
         new_form=new_form,
@@ -85,7 +85,7 @@ def add_new_submit(request):
 
 def add_existing_submit(request):
     if request.method == 'POST':
-        form = ListAddExistingForm(request.POST or None, request=request)
+        form = ListAddExistingForm(request.POST or None, user=request.user)
 
         print request.POST
         if form.is_valid():

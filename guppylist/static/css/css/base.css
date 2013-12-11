@@ -158,13 +158,31 @@ ul.list li {
 }
 
 /* line 143, ../sass/base.scss */
-ul.list li.list-itme, .list-item {
+ul.list li.list-item, div.list-item {
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px dotted #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  background: #ffffff;
+  /* Old browsers */
+  background: #ffffff;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, white 51%, #f2f2f2 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(51%, white), color-stop(100%, #f2f2f2));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, white 51%, #f2f2f2 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, white 51%, #f2f2f2 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, white 51%, #f2f2f2 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 51%, #f2f2f2 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 );
+  /* IE6-9 */
 }
 
-/* line 148, ../sass/base.scss */
+/* line 157, ../sass/base.scss */
 .list-item.last {
   border-bottom: 0px;
   margin-bottom: 0px;
@@ -172,13 +190,13 @@ ul.list li.list-itme, .list-item {
 }
 
 /* UI Helpers */
-/* line 155, ../sass/base.scss */
+/* line 164, ../sass/base.scss */
 .rounded-corners {
   border-radius: 4px 4px 4px 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
 }
 
-/* line 160, ../sass/base.scss */
+/* line 169, ../sass/base.scss */
 .loader {
   background: url("../../images/template/loader-large.gif") no-repeat scroll 50% 50%;
   background-color: rgba(255, 255, 255, 0.8);
@@ -190,7 +208,7 @@ ul.list li.list-itme, .list-item {
   text-align: center;
   vertical-align: middle;
 }
-/* line 171, ../sass/base.scss */
+/* line 180, ../sass/base.scss */
 .loader span {
   vertical-align: middle;
   display: inline-block;
@@ -199,7 +217,7 @@ ul.list li.list-itme, .list-item {
   color: #666666;
 }
 
-/* line 179, ../sass/base.scss */
+/* line 188, ../sass/base.scss */
 .loader:before {
   content: '';
   display: inline-block;
@@ -208,34 +226,34 @@ ul.list li.list-itme, .list-item {
   margin-right: -0.25em;
 }
 
-/* line 186, ../sass/base.scss */
+/* line 195, ../sass/base.scss */
 .loader.loader-small {
   background: url("../images/template/loader-small.gif") no-repeat scroll 50% 50%;
 }
 
 /* Images */
-/* line 191, ../sass/base.scss */
+/* line 200, ../sass/base.scss */
 .image-main {
   -moz-box-shadow: 0px 3px 7px 0px #666666;
   -webkit-box-shadow: 0px 3px 7px 0px #666666;
   box-shadow: 0px 3px 7px 0px #666666;
 }
 
-/* line 196, ../sass/base.scss */
+/* line 205, ../sass/base.scss */
 .image-medium {
   -moz-box-shadow: 0px 2px 5px 0px #666666;
   -webkit-box-shadow: 0px 2px 5px 0px #666666;
   box-shadow: 0px 2px 5px 0px #666666;
 }
 
-/* line 201, ../sass/base.scss */
+/* line 210, ../sass/base.scss */
 .image-small {
   -moz-box-shadow: 0px 1px 3px 0px #666666;
   -webkit-box-shadow: 0px 1px 3px 0px #666666;
   box-shadow: 0px 1px 3px 0px #666666;
 }
 
-/* line 206, ../sass/base.scss */
+/* line 215, ../sass/base.scss */
 .image-thumb {
   -moz-box-shadow: 0px 1px 2px 0px #666666;
   -webkit-box-shadow: 0px 1px 2px 0px #666666;

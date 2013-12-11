@@ -140,10 +140,19 @@ ul.list {
         width: 100%;
     }
 }
-ul.list li.list-itme, .list-item {
+ul.list li.list-item, div.list-item {
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px dotted #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    background: #ffffff; /* Old browsers */
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 51%, #f2f2f2 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(51%,#ffffff), color-stop(100%,#f2f2f2)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 51%,#f2f2f2 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 51%,#f2f2f2 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 51%,#f2f2f2 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 51%,#f2f2f2 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
 }
 .list-item.last {
     border-bottom: 0px;

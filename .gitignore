@@ -1,3 +1,7 @@
 .DS_Store
 *.pyc
 guppylist/static/css/.sass-cache
+.Python
+bin
+include
+lib

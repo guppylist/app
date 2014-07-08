@@ -10,13 +10,17 @@ def view_variables(request):
     if request.GET.get('q'):
         q = request.GET.get('q')
 
+    user_lists = []
+    if request.user.is_authenticated():
+        user_lists = List.objects.filter(user=request.user)
+
     return {
         'google_analytics_id': settings.GOOGLE_ANALYTICS_ID,
         'facebook_app_id': settings.FACEBOOK_APP_ID,
         'page_title': page_title,
         'q': q,
         'scripts': request.scripts,
-        'user_lists': List.objects.filter(user=request.user),
+        'user_lists': user_lists,
     }
 
 def status_messages(request):

@@ -3,6 +3,23 @@ $(function () {
     $("[data-toggle='popover']").popover();
 
     $('#search-field').typeahead({
+        name: 'products',
+        local: ['hello', 'world'],
+        limit: 10,
+    });
+
+    // $('#search-field').typeahead({
+    //     name: 'products',
+    //     remote: {
+    //         url: 'http://completion.amazon.com/search/complete?q=%QUERY&search-alias=videogames&mkt=1',
+    //         dataType: 'jsonp',
+    //     },
+    //     remote: 'http://completion.amazon.com/search/complete?method=completion&q=kindle&search-alias=videogames&mkt=1',
+    //     local: ['hello', 'world'],
+    //     limit: 10,
+    // });
+    /*
+    $('#search-field').typeahead({
         minLength: 2,
         items: 30,
         source: function(q, process) {
@@ -33,94 +50,5 @@ $(function () {
             return item;
         }
     });
+    */
 });
-
-/* AngularJS */
-angular.module('guppylist', ['ngCookies'], function($compileProvider) {
-    $compileProvider.directive('compile', function($compile) {
-        return function(scope, element, attrs) {
-          scope.$watch(
-            function(scope) {
-              return scope.$eval(attrs.compile);
-            },
-            function(value) {
-              element.html(value);
-              $compile(element.contents())(scope);
-            }
-          );
-        };
-    });
-})
-.run( function run( $http, $cookies ){
-    // For CSRF token compatibility with Django
-    $http.defaults.headers.post['X-CSRFToken'] = $cookies['csrftoken'];
-})
-.config(function ($httpProvider) {
-    $httpProvider.defaults.transformRequest = function(data) {
-        if (data === undefined) {
-            return data;
-        }
-        return $.param(data);
-    }
-
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-});
-
-function ListAddProductFormController($scope, $http, $cookies) {
-    $scope.init = function() {
-        $scope.loaderShow = false;
-        $scope.listAddForm = eval(scripts.list.addProductToListForm);
-
-        // Existing list select box.
-        $scope.lists = eval(scripts.list.lists);
-
-        // Set default form state.
-        var tab = 'existing';
-        if (_.isEmpty($scope.lists)) {
-            tab = 'new';
-        }
-
-        // Initialize form.
-        $scope.form = {
-            'tab': tab,
-            'product_id': scripts.list.productId,
-            'list_id': $scope.lists[0],
-        };
-    }
-
-    $scope.tabClick = function(type) {
-        $scope.form.tab = type;
-    }
-
-    $scope.formSubmit = function() {
-        $scope.loaderShow = true;
-
-        // Prepare list_id.
-        if (!_.isEmpty($scope.form.list_id)) {
-            $scope.form.list_id = $scope.form.list_id.id;
-        }
-
-        console.log($scope.form);
-
-        var url = '/lists/add/new/submit/';
-        if ($scope.form.tab == 'existing') {
-            url = '/lists/add/existing/submit/';
-        }
-
-        $http.post(url, $scope.form).
-            success(function(response, status) {
-                console.log(response);
-                if (response.success) {
-                    $('#addToList').modal('hide');
-                } else {
-                    $scope.listAddForm = response.form;
-                }
-                $scope.loaderShow = false;
-            }).
-            error(function(data, status) {
-                console.log('error');
-            });
-    }
-
-    $scope.init();
-}

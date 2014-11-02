@@ -1,0 +1,34 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="list-item-add-form" ng-controller="ListItemAddController">
+    <form action="/item/add/" method="post">
+      {% csrf_token %}
+      {{ form.errors }}
+      {{ form.url }}
+      {{ form.title }}
+      {{ form.description }}
+
+      {% for image in form.image %}
+        {{ image }}
+      {% endfor %}
+      <hr />
+
+      images:<br />
+      <ul>
+        <li ng-repeat="imageObj in images">
+          <label for="image-{[ $index ]}">
+            <input type="radio" id="image-{[ $index ]}" name="image" ng-model="image" value="{[ imageObj.src ]}">
+            <img src="{[ imageObj.src ]}" width="100">
+          </label>
+        </li>
+      </ul>
+
+      <input type="submit" class="btn btn-primary pull-right" value="Add">
+    </form>
+  </div>
+{% endblock content %}

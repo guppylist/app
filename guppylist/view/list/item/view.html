@@ -1,0 +1,17 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="list-item-view">
+    <h1>{{ item.title }}</h1>
+    <div>id: {{ item.id }}</div>
+    <div>url: {{ item.url }}</div>
+    <div>title: {{ item.title }}</div>
+    <div>description: {{ item.description }}</div>
+    <div><img src="{{ item.image_thumb.url }}"></div>
+    <div>by: <a href="{{ item.user.get_url }}">{{ item.user }}</a></div>
+  </div>
+{% endblock content %}

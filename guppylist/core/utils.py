@@ -1,6 +1,6 @@
 from pprint import pprint
 
-def MLog(output, type='output'):
+def GLog(output, type='output'):
     if type is 'header':
         print('\n')
         print('_' * (output.__len__() + 4))

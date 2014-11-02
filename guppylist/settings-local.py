@@ -1,12 +1,12 @@
 # Django settings for guppylist project.
 
 import os
-import sys
 from django.conf import global_settings
 
-ROOT_PATH = os.path.dirname(__file__)
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+ROOT_PATH = os.path.dirname(__file__)
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -85,7 +85,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -152,7 +152,6 @@ INSTALLED_APPS = (
     # 'guppylist.contrib.page',
     'guppylist.contrib.list',
     'guppylist.contrib.search',
-    'guppylist.contrib.product',
 )
 
 # A sample logging configuration. The only tangible logging

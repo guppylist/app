@@ -5,6 +5,9 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /_ah/spi/.*
+  script: main.APPLICATION
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
@@ -12,6 +15,10 @@ handlers:
 - url: .*
   script: main.app
 
+# https://cloud.google.com/appengine/docs/python/tools/libraries27?hl=en
 libraries:
+- name: endpoints
+  version: 1.0
+
 - name: webapp2
   version: "2.5.2"

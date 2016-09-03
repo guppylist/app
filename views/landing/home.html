@@ -1,5 +1,23 @@
 {% extends 'layouts/page.html' %}
 
 {% block content %}
-  <h1>guppy::list</h1>
+  <h1><i class="material-icons">assignment</i> guppy.list</h1>
+
+  <div id="product-search" ng-controller="ProductSearchController">
+    <form class="form-inline">
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Search for a product" ng-model="q" ng-change="onSearchQueryChange();">
+        <span class="input-group-addon btn btn-success"><i class="glyphicon glyphicon-search"></i></span>
+      </div>
+    </form>
+
+    <div ng-if="products.length > 0">
+      <hr />
+
+      <div ng-repeat="product in products">
+        <h3>{$ product.title $}</h3>
+        <img ng-src="{$ product.image_medium $}">
+      </div>
+    </div>
+  </div>
 {% endblock content %}

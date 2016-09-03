@@ -1,2 +1,5 @@
 static/styles/.sass-cache
+wishlist/settings/local.py
+wishlist/settings/development.py
+wishlist/settings/production.py
 *.pyc

@@ -4,3 +4,8 @@ body {
   font-size: 14px;
   padding-top: 40px;
 }
+
+/* line 9, ../sass/wishlist.scss */
+#product-search .input-group {
+  width: 100%;
+}

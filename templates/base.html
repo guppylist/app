@@ -1,6 +1,6 @@
 {% load static from staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="wishlist-app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +28,11 @@
     {% block body %}
     {% endblock body %}
 
+    <div ng-view></div>
+
+    <script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
+    <script src="{% static 'scripts/angular/wishlist.app.js' %}"></script>
+    <script src="{% static 'scripts/angular/wishlist.controllers.js' %}"></script>
     <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>

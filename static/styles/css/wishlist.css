@@ -2,10 +2,74 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  padding-top: 40px;
+  padding-top: 65px;
 }
 
-/* line 9, ../sass/wishlist.scss */
+/* Helpers */
+/* line 8, ../sass/wishlist.scss */
+.quiet {
+  color: #999999;
+}
+
+/* UI Elements */
+/* line 13, ../sass/wishlist.scss */
+.card {
+  background: #ffffff;
+  border: 2px solid #efefef;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 1px rgba(34, 25, 25, 0.1);
+  margin: 0 2px 15px;
+  padding: 15px;
+  transition: opacity .4s ease-in-out;
+  display: inline-block;
+  column-break-inside: avoid;
+}
+/* line 24, ../sass/wishlist.scss */
+.card:hover {
+  cursor: pointer;
+}
+
+/* line 31, ../sass/wishlist.scss */
+#product-search .product-search-form {
+  padding: 15px 0;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #dcdcdc;
+  position: fixed;
+  width: 100%;
+  background: #ffffff;
+}
+/* line 41, ../sass/wishlist.scss */
 #product-search .input-group {
   width: 100%;
+}
+
+/* line 46, ../sass/wishlist.scss */
+#product-search-results {
+  column-width: 300px;
+  column-gap: 0;
+  margin-top: 75px;
+}
+/* line 52, ../sass/wishlist.scss */
+#product-search-results .search-result-item.card {
+  width: 370px;
+}
+/* line 56, ../sass/wishlist.scss */
+#product-search-results .search-result-item .product-image {
+  width: 359px;
+  border-radius: 10px;
+}
+/* line 61, ../sass/wishlist.scss */
+#product-search-results .search-result-item .product-title {
+  font-weight: bold;
+  font-size: 1.35em;
+  padding: 3px 7px 3px 5px;
+}
+/* line 67, ../sass/wishlist.scss */
+#product-search-results .search-result-item .product-brand {
+  padding: 0 7px 5px 7px;
+}
+/* line 71, ../sass/wishlist.scss */
+#product-search-results .search-result-item:hover {
+  background: #efefef;
 }

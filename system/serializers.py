@@ -18,7 +18,6 @@ class ProductSearchSerializer(serializers.Serializer):
     asin = serializers.CharField()
     title = serializers.CharField()
     brand = serializers.CharField()
-    category = serializers.CharField()
     image_small = serializers.URLField()
     image_medium = serializers.URLField()
     image_large = serializers.URLField()

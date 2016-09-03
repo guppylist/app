@@ -25,8 +25,14 @@
   </head>
 
   <body>
+    {% block prebody %}
+    {% endblock prebody %}
+
     {% block body %}
     {% endblock body %}
+
+    {% block postbody %}
+    {% endblock postbody %}
 
     <div ng-view></div>
 

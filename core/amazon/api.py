@@ -24,7 +24,7 @@ class AmazonApi(BaseObject):
     @staticmethod
     def search(q):
         api = AmazonApi.instance()
-        xml_result = api.ItemSearch(Keywords=q, SearchIndex='All', ResponseGroup='Medium')
+        xml_result = api.ItemSearch(Keywords=q, SearchIndex='All', ResponseGroup='Small,Images', TotalResults=25)
 
         root = BeautifulSoup(xml_result, 'xml')
         print(root)
@@ -41,9 +41,8 @@ class Product(BaseObject):
         self.asin = data.ASIN.string
         self.title = data.ItemAttributes.Title.string
         self.brand = data.ItemAttributes.Manufacturer.string if data.ItemAttributes.Manufacturer else None
-        self.category = data.ItemAttributes.Binding.string
-        self.image_small = data.SmallImage.URL.string
-        self.image_medium = data.MediumImage.URL.string
-        self.image_large = data.LargeImage.URL.string
-        self.detail_page = data.DetailPageURL.string
+        self.image_small = data.SmallImage.URL.string if data.SmallImage else None
+        self.image_medium = data.MediumImage.URL.string if data.MediumImage else None
+        self.image_large = data.LargeImage.URL.string if data.LargeImage else None
+        self.detail_page = data.DetailPageURL.string if data.DetailPageURL else None
 

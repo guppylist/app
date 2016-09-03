@@ -32,7 +32,7 @@ class ApiProductSearchViewSet(viewsets.ViewSet):
     serializer_class = ProductSearchSerializer
 
     def list(self, request, *args, **kwargs):
-        q = 'kindle paperwhite'
+        q = request.GET.get('q')
         results = AmazonApi.search(q)
 
         serializer = ProductSearchSerializer(instance=results, many=True)

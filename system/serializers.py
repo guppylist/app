@@ -14,7 +14,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'name')
 
 
-class ProductSearchSerializer(serializers.Serializer):
+class ProductSerializer(serializers.Serializer):
     asin = serializers.CharField()
     title = serializers.CharField()
     brand = serializers.CharField()

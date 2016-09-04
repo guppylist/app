@@ -27,7 +27,37 @@ class AmazonApi(BaseObject):
         xml_result = api.ItemSearch(Keywords=q, SearchIndex='All', ResponseGroup='Small,Images', TotalResults=25)
 
         root = BeautifulSoup(xml_result, 'xml')
-        print(root)
+        # print(root)
+
+        products = []
+        for item in root.Items.find_all('Item'):
+            products.append(Product(item))
+
+        return products
+
+    @staticmethod
+    def get_products():
+        api = AmazonApi.instance()
+        # xml_result = api.ItemLookup(ItemId=asin)
+        #
+        # root = BeautifulSoup(xml_result, 'xml')
+        # print(root)
+
+    @staticmethod
+    def get_product_details(asin):
+        api = AmazonApi.instance()
+        xml_result = api.ItemLookup(ItemId=asin)
+
+        root = BeautifulSoup(xml_result, 'xml')
+
+        return Product(root)
+
+    @staticmethod
+    def get_similar_products(asin):
+        api = AmazonApi.instance()
+        xml_result = api.SimilarityLookup(ItemId=asin, ResponseGroup='Small,Images')
+
+        root = BeautifulSoup(xml_result, 'xml')
 
         products = []
         for item in root.Items.find_all('Item'):

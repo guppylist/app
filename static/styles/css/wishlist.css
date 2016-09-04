@@ -23,13 +23,35 @@ body {
   transition: opacity .4s ease-in-out;
   display: inline-block;
   column-break-inside: avoid;
+  vertical-align: top;
 }
-/* line 24, ../sass/wishlist.scss */
+/* line 25, ../sass/wishlist.scss */
 .card:hover {
   cursor: pointer;
 }
 
+/* Bootstrap Overrides */
 /* line 31, ../sass/wishlist.scss */
+.modal-backdrop {
+  -webkit-filter: blur(50px);
+  -moz-filter: blur(50px);
+  -o-filter: blur(50px);
+  -ms-filter: blur(50px);
+  filter: blur(50px);
+  background-color: #ffffff;
+}
+/* line 39, ../sass/wishlist.scss */
+.modal-backdrop.in {
+  opacity: .9;
+}
+
+/* line 44, ../sass/wishlist.scss */
+.modal-content {
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Pages */
+/* line 51, ../sass/wishlist.scss */
 #product-search .product-search-form {
   padding: 15px 0;
   margin-top: -15px;
@@ -38,38 +60,83 @@ body {
   position: fixed;
   width: 100%;
   background: #ffffff;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 }
-/* line 41, ../sass/wishlist.scss */
+/* line 62, ../sass/wishlist.scss */
 #product-search .input-group {
   width: 100%;
 }
 
-/* line 46, ../sass/wishlist.scss */
+/* line 67, ../sass/wishlist.scss */
 #product-search-results {
   column-width: 300px;
   column-gap: 0;
   margin-top: 75px;
 }
-/* line 52, ../sass/wishlist.scss */
+/* line 74, ../sass/wishlist.scss */
 #product-search-results .search-result-item.card {
   width: 370px;
 }
-/* line 56, ../sass/wishlist.scss */
+/* line 78, ../sass/wishlist.scss */
 #product-search-results .search-result-item .product-image {
   width: 359px;
   border-radius: 10px;
 }
-/* line 61, ../sass/wishlist.scss */
+/* line 83, ../sass/wishlist.scss */
 #product-search-results .search-result-item .product-title {
   font-weight: bold;
   font-size: 1.35em;
   padding: 3px 7px 3px 5px;
 }
-/* line 67, ../sass/wishlist.scss */
+/* line 89, ../sass/wishlist.scss */
 #product-search-results .search-result-item .product-brand {
   padding: 0 7px 5px 7px;
 }
-/* line 71, ../sass/wishlist.scss */
+/* line 93, ../sass/wishlist.scss */
 #product-search-results .search-result-item:hover {
   background: #efefef;
+}
+
+/* line 100, ../sass/wishlist.scss */
+#product-details .modal-dialog {
+  width: 950px;
+  margin: 65px auto;
+}
+/* line 105, ../sass/wishlist.scss */
+#product-details .product-info {
+  margin-bottom: 15px;
+}
+/* line 108, ../sass/wishlist.scss */
+#product-details .product-info .product-image {
+  border-radius: 10px;
+  width: 365px;
+}
+/* line 113, ../sass/wishlist.scss */
+#product-details .product-info .product-title {
+  margin: 0;
+}
+/* line 118, ../sass/wishlist.scss */
+#product-details .similar-products {
+  column-width: 200px;
+  column-gap: 0;
+  margin-top: 75px;
+  background: #dddddd;
+  padding: 15px 5px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+/* line 126, ../sass/wishlist.scss */
+#product-details .similar-products .card {
+  width: 225px;
+  padding: 10px;
+}
+/* line 130, ../sass/wishlist.scss */
+#product-details .similar-products .card .product-image {
+  width: 200px;
+  margin-bottom: 10px;
+}
+/* line 135, ../sass/wishlist.scss */
+#product-details .similar-products .card .product-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1em;
 }

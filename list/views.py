@@ -8,5 +8,5 @@ class ListListView(TemplateView):
 
 
 class ListDetailView(DetailView):
-    template_name = 'list/detail.html'
+    template_name = 'list/details.html'
     model = List

@@ -1,0 +1,39 @@
+<div class="modal" id="product-details" tabindex="-1" role="dialog" ng-controller="ProductDetailsController">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row product-info">
+          <div class="col-md-5">
+            <img class="img-thumbnail product-image" ng-src="[{ product.image_large }]">
+          </div>
+          <div class="col-md-7">
+            <h1 class="product-title">[{ product.title }]</h1>
+            <div class="quiet">[{ product.brand }]</div>
+            <hr />
+
+            <div class="pull-right">
+              <a href="[{ product.detail_page }]" class="btn btn-success" target="_blank">View on amazon.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row similar-products">
+          <div class="card" ng-repeat="product in similarProducts">
+            <img ng-src="[{ product.image_large }]" class="img-thumbnail product-image">
+            <div class="product-title">[{ product.title }]</div>
+            <div class="quiet">[{ product.brand }]</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

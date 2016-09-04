@@ -16,7 +16,11 @@
 
 {% block content %}
   <div id="product-search-results" ng-if="products.length > 0">
-    <div class="card search-result-item" ng-repeat="product in products">
+    <div class="card search-result-item"
+         ng-repeat="product in products"
+         ng-click="onProductClick(product)"
+         data-toggle="modal"
+         data-target="#product-details">
       <img class="img-thumbnail product-image" ng-src="[{ product.image_large }]">
       <div class="product-title">
         [{ product.title }]
@@ -30,4 +34,6 @@
 
 {% block postbody %}
   </div>
+
+  {% include 'list/details.html' %}
 {% endblock postbody %}

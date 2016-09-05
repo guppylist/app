@@ -6,6 +6,23 @@ wishlistApp.config(function($interpolateProvider) {
 });
 
 /**
+ * Show/hides loader overlay.
+ */
+wishlistApp.factory('loader', function() {
+  return {
+    on: function(element, text) {
+      if (text) {
+        $(element + ' .loader span').html(text);
+      }
+      $(element + ' .loader').show();
+    },
+    off: function(element) {
+      $(element + ' .loader').hide();
+    }
+  }
+});
+
+/**
  * Outputs the rating indicator markup.
  *
  * @param rating - integer rating to be converted.

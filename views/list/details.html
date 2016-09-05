@@ -22,10 +22,15 @@
         </div>
 
         <div class="row similar-products">
-          <div class="card" ng-repeat="product in similarProducts">
-            <img ng-src="[{ product.image_large }]" class="img-thumbnail product-image">
-            <div class="product-title">[{ product.title }]</div>
-            <div class="quiet">[{ product.brand }]</div>
+          <div class="loader"><span>loading...</span></div>
+          <h2>Related items</h2>
+
+          <div class="similar-products-items">
+            <div class="card" ng-repeat="product in similarProducts" ng-click="onProductClick(product);">
+              <img ng-src="[{ product.image_large }]" class="img-thumbnail product-image">
+              <div class="product-title">[{ product.title }]</div>
+              <div class="quiet">[{ product.brand }]</div>
+            </div>
           </div>
         </div>
 

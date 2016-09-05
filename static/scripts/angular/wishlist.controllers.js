@@ -5,17 +5,22 @@ var keypressDelay = 500;
 /**
  * Product search page.
  */
-wishlistApp.controller('ProductSearchController', function($scope, $http, sharedProperties) {
+wishlistApp.controller('ProductSearchController', function($scope, $http, sharedProperties, loader) {
   /**
    * Handler when the search query is changed.
    */
   $scope.onSearchQueryChange = function() {
     if ($scope.q.length >= 3) {
+      loader.on('#product-search-results');
+
       clearTimeout(keypressTimeout);
 
       console.log($scope.q);
       keypressTimeout = setTimeout(function() {
-        $scope.searchProducts();
+        $scope.searchProducts($scope.q, function(response) {
+          $scope.products = response.data;
+          loader.off('#product-search-results');
+        });
       }, keypressDelay);
     }
   };
@@ -23,10 +28,9 @@ wishlistApp.controller('ProductSearchController', function($scope, $http, shared
   /**
    * Get search results from the Wishlist API.
    */
-  $scope.searchProducts = function() {
-    $http.get('/api/search/products/?q=' + $scope.q).then(function(data) {
-      $scope.products = data.data;
-      console.log($scope.products)
+  $scope.searchProducts = function(q, callback) {
+    $http.get('/api/search/products/?q=' + q).then(function(response) {
+      callback(response);
     }, function() {
 
     });
@@ -44,14 +48,14 @@ wishlistApp.controller('ProductSearchController', function($scope, $http, shared
 
   // DEBUG DEBUG
   $scope.q = 'hamilton';
-  $scope.searchProducts();
+  $scope.onSearchQueryChange();
 });
 
 
 /**
  * Product details modal.
  */
-wishlistApp.controller('ProductDetailsController', function($scope, $http, sharedProperties) {
+wishlistApp.controller('ProductDetailsController', function($scope, $http, sharedProperties, loader) {
   $scope.$on('productSelected', function(event) {
     $scope.product = sharedProperties.getProperty('product');
 
@@ -61,10 +65,25 @@ wishlistApp.controller('ProductDetailsController', function($scope, $http, share
   });
 
   $scope.getProductDetails = function(product, callback) {
+    loader.on('.similar-products');
     $http.get('/api/products/' + product.asin + '/similar').then(function(data) {
       $scope.similarProducts = data.data;
+      loader.off('.similar-products');
     }, function() {
 
     });
   }
+
+  /**
+   * Click handler when a product is clicked.
+   */
+  $scope.onProductClick = function(product) {
+    // Set the selected product to be accessed globally.
+    sharedProperties.setProperty('product', product);
+
+    $scope.$root.$broadcast('productSelected');
+
+    // Scroll to the top of the modal.
+    $('body').animate({scrollTop: 0}, 'slow');
+  };
 });

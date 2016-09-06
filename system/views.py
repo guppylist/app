@@ -4,8 +4,9 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route
 
-from system.serializers import UserSerializer, GroupSerializer, ProductSerializer
+from system.serializers import UserSerializer, GroupSerializer, ProductSerializer, ListSerializer
 from core.amazon.api import AmazonApi
+from list.models import ListItem, List
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -99,3 +100,11 @@ class ApiProductViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(instance=results, many=True)
 
         return Response(serializer.data)
+
+
+class ApiListViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for lists.
+    """
+    queryset = List.objects.all()
+    serializer_class = ListSerializer

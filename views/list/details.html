@@ -51,12 +51,12 @@
               <hr />
               <h3>Your Lists</h3>
               <div class="wishlist-list">
-                <div class="wishlist-list-item card card-borderless" ng-repeat="list in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" ng-mouseover="wishlistListItem = true" ng-mouseout="wishlistListItem = false" ng-init="wishlistListItem = false">
+                <div class="wishlist-list-item card card-borderless" ng-repeat="list in lists" ng-mouseover="wishlistListItem = true" ng-mouseout="wishlistListItem = false" ng-init="wishlistListItem = false">
                   <div class="col-md-2 wishlist-image no-pad-left">
                     <img ng-src="http://placehold.it/75x75">
                   </div>
                   <div class="col-md-10 wishlist-info">
-                    <div class="wishlist-title">List Title</div>
+                    <div class="wishlist-title">[{ list.title }]</div>
                     <div class="wishlist-description quiet">Description</div>
 
                     <button class="btn btn-danger button-add" ng-show="wishlistListItem" ng-click="onProductAddToListClick(product, list);"><span class="material-icons">playlist_add</span> Add</button>

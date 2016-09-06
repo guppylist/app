@@ -4,7 +4,7 @@ from core.models import ContentModel
 
 
 class List(ContentModel):
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
 
 class ListItem(ContentModel):

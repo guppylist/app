@@ -105,9 +105,16 @@ wishlistApp.controller('ProductInfoController', function($scope, $http, sharedPr
  * Product add to list modal.
  */
 wishlistApp.controller('ProductAddToListController', function($scope, $http, sharedProperties, loader, modalRouter) {
+  /**
+   * Broadcast receiver for when the add-to-list action is triggered.
+   */
   $scope.$on('addToList', function(event) {
     $scope.product = sharedProperties.getProperty('product');
     modalRouter.showSection('product-section-add-to-list');
+
+    $scope.getUserWishlists(function(response) {
+      $scope.lists = response.data.results;
+    });
   });
 
   /**
@@ -123,6 +130,17 @@ wishlistApp.controller('ProductAddToListController', function($scope, $http, sha
   $scope.onProductAddToListClick = function(product, list) {
     console.log(product);
     console.log('list:', list);
+  };
+
+  /**
+   * Get's the user's wishlists via the API.
+   */
+  $scope.getUserWishlists = function(callback) {
+    $http.get('/api/lists/?userId=1').then(function(response) {
+      callback(response);
+    }, function() {
+
+    });;
   };
 });
 

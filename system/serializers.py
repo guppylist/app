@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
+from list.models import List, ListItem
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -22,3 +24,13 @@ class ProductSerializer(serializers.Serializer):
     image_medium = serializers.URLField()
     image_large = serializers.URLField()
     detail_page = serializers.URLField()
+
+
+class ListSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = List
+        fields = ('id', 'title', 'description')
+
+    id = serializers.IntegerField()
+    title = serializers.CharField()
+    description = serializers.CharField()

@@ -10,6 +10,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'search/products', views.ApiProductSearchViewSet, base_name='search_products')
 router.register(r'products', views.ApiProductViewSet, base_name='products')
+router.register(r'lists', views.ApiListViewSet, base_name='lists')
 
 urlpatterns = [
     url(r'^', include(router.urls)),

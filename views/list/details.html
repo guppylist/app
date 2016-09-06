@@ -1,44 +1,103 @@
-<div class="modal" id="product-details" tabindex="-1" role="dialog" ng-controller="ProductDetailsController">
+<div class="modal" id="product-details" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"></h4>
       </div>
+
       <div class="modal-body">
-        <div class="row product-info">
-          <div class="col-md-5">
-            <img class="img-thumbnail product-image" ng-src="[{ product.image_large }]">
-          </div>
-          <div class="col-md-7">
-            <h1 class="product-title">[{ product.title }]</h1>
-            <div class="quiet">[{ product.brand }]</div>
-            <hr />
-
-            <div class="pull-right">
-              <a href="[{ product.detail_page }]" class="btn btn-success" target="_blank">View on amazon.com</a>
+        <!-- Product Info -->
+        <div id="product-section-info" class="product-modal-section" ng-controller="ProductInfoController">
+          <div class="row product-info">
+            <div class="col-md-5">
+              <img class="img-thumbnail product-image" ng-src="[{ product.image_large }]">
             </div>
-          </div>
-        </div>
-
-        <div class="row similar-products">
-          <div class="loader"><span>loading...</span></div>
-          <h2>Related items</h2>
-
-          <div class="similar-products-items">
-            <div class="card" ng-repeat="product in similarProducts" ng-click="onProductClick(product);">
-              <img ng-src="[{ product.image_large }]" class="img-thumbnail product-image">
-              <div class="product-title">[{ product.title }]</div>
+            <div class="col-md-7">
+              <h1 class="product-title">[{ product.title }]</h1>
               <div class="quiet">[{ product.brand }]</div>
+              <hr />
+
+              <div class="pull-right">
+                <button class="btn btn-success" ng-click="onProductAddToListClick();"><span class="material-icons">playlist_add</span> Add To List</button>
+                <a href="[{ product.detail_page }]" class="btn btn-default" target="_blank">View on amazon.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row similar-products">
+            <div class="loader"><span>loading...</span></div>
+            <h2>Related items</h2>
+
+            <div class="similar-products-items">
+              <div class="card" ng-repeat="product in similarProducts" ng-click="onProductClick(product);">
+                <img ng-src="[{ product.image_large }]" class="img-thumbnail product-image">
+                <div class="product-title">[{ product.title }]</div>
+                <div class="quiet">[{ product.brand }]</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add To List -->
+        <div id="product-section-add-to-list" class="product-modal-section" ng-controller="ProductAddToListController">
+          <div class="row product-info">
+            <div class="col-md-5">
+              <img class="img-thumbnail product-image" ng-src="[{ product.image_large }]">
+            </div>
+            <div class="col-md-7">
+              <h1 class="product-title">[{ product.title }]</h1>
+              <div class="quiet">[{ product.brand }]</div>
+              <hr />
+              <h3>Your Lists</h3>
+              <div class="wishlist-list">
+                <div class="wishlist-list-item card card-borderless" ng-repeat="list in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" ng-mouseover="wishlistListItem = true" ng-mouseout="wishlistListItem = false" ng-init="wishlistListItem = false">
+                  <div class="col-md-2 wishlist-image no-pad-left">
+                    <img ng-src="http://placehold.it/75x75">
+                  </div>
+                  <div class="col-md-10 wishlist-info">
+                    <div class="wishlist-title">List Title</div>
+                    <div class="wishlist-description quiet">Description</div>
+
+                    <button class="btn btn-danger button-add" ng-show="wishlistListItem" ng-click="onProductAddToListClick(product, list);"><span class="material-icons">playlist_add</span> Add</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pull-right">
+                <button class="btn btn-danger" ng-click="onCreateListClick();"><i class="material-icons">playlist_add_check</i> Create New List</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Create List -->
+        <div id="product-section-create-list" class="product-modal-section" ng-controller="ProductCreateListController">
+          <div class="row product-info">
+            <div class="col-md-5">
+              <img class="img-thumbnail product-image" ng-src="[{ product.image_large }]">
+            </div>
+            <div class="col-md-7">
+              <h1 class="product-title">[{ product.title }]</h1>
+              <div class="quiet">[{ product.brand }]</div>
+              <hr />
+              <form>
+                <h3>Create New List</h3>
+                <input type="text" class="form-control input-lg" placeholder="List name" ng-model="listName">
+                <br />
+
+                <div class="pull-right">
+                  <button class="btn btn-success" ng-click="onCreateListClick(product);">Create</button>
+                  <button class="btn btn-default" ng-click="onCancelCreateList();">Cancel</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
+      <!--<div class="modal-footer"></div>-->
     </div>
   </div>
 </div>

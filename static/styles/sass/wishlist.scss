@@ -9,6 +9,25 @@ body {
   color: #999999;
 }
 
+.pad {
+  padding: 15px;
+}
+.no-pad {
+  padding: 0;
+}
+.no-pad-top {
+  padding-top: 0;
+}
+.no-pad-right {
+  padding-right: 0;
+}
+.no-pad-bottom {
+  padding-bottom: 0;
+}
+.no-pad-left {
+  padding-left: 0;
+}
+
 /* UI Elements */
 
 /* UI Elements - Cards */
@@ -26,7 +45,20 @@ body {
 
   &:hover {
     cursor: pointer;
+    background: #efefef;
   }
+
+  &.card-borderless {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: 0 0 0 0;
+  }
+}
+
+/* UI Elements - Google Material Icons */
+.material-icons {
+  vertical-align: middle;
 }
 
 /* UI Elements - Loader Overlay */
@@ -136,7 +168,11 @@ footer {
     width: 950px;
     margin: 65px auto;
   }
+}
 
+#product-details #product-section-info,
+#product-details #product-section-add-to-list,
+#product-details #product-section-create-list {
   .product-info {
     margin-bottom: 15px;
 
@@ -149,7 +185,9 @@ footer {
       margin: 0;
     }
   }
+}
 
+#product-details #product-section-info {
   .similar-products {
     position: relative;
     background: #dddddd;
@@ -183,4 +221,44 @@ footer {
       }
     }
   }
+}
+
+#product-details #product-section-add-to-list {
+  .wishlist-list {
+    max-height: 420px;
+    overflow-x: hidden;
+
+    .wishlist-list-item {
+      width: 100%;
+
+      .wishlist-image img {
+        width: 75px;
+        vertical-align: top;
+      }
+
+      .wishlist-info {
+        display: inline-block;
+        vertical-align: top;
+
+        .wishlist-title {
+          font-size: 1.4em;
+          font-weight: bold;
+        }
+
+        .wishlist-description {
+
+        }
+
+        .button-add {
+          position: absolute;
+          top: 18px;
+          right: 0;
+        }
+      }
+    }
+  }
+}
+
+#product-details #product-section-create-list {
+
 }

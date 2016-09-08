@@ -29,8 +29,8 @@ class ProductSerializer(serializers.Serializer):
 class ListSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = List
-        fields = ('id', 'title', 'description')
+        fields = ('id', 'title', 'description', 'items', 'user')
 
-    id = serializers.IntegerField()
-    title = serializers.CharField()
-    description = serializers.CharField()
+    # id = serializers.IntegerField()
+    # title = serializers.CharField()
+    # description = serializers.CharField(allow_blank=True)

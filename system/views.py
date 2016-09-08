@@ -108,3 +108,24 @@ class ApiListViewSet(viewsets.ModelViewSet):
     """
     queryset = List.objects.all()
     serializer_class = ListSerializer
+
+    @detail_route(methods=['post'])
+    def add_item(self, request, *args, **kwargs):
+        """
+        [GET] /api/lists/{pk}/add_item?userId=&productId=
+
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        list_id = kwargs['pk']
+        user_id = request.data.get('userId')
+        product_id = request.data.get('productId')
+        print('list_id:', list_id)
+        print('user_id:', user_id)
+        print('product_id:', product_id)
+
+        # results = List.objects.all()
+        # serializer = ListSerializer(instance=results)
+        return Response({'foo':'bar'})

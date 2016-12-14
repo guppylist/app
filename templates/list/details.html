@@ -1,0 +1,13 @@
+{% extends 'layout/page.html' %}
+
+{% block content %}
+  <h1>{{ list.title }}</h1>
+  <p>{{ list.description }}</p>
+
+  <div>
+    {% for item in list['items'] %}
+      <h3>{{ item.title }}</h3>
+      <img src="{{ item.image }}">
+    {% endfor %}
+  </div>
+{% endblock content %}

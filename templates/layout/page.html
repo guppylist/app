@@ -1,0 +1,12 @@
+{% extends 'layout/template.html' %}
+
+{% block template %}
+  <div class="container">
+    <div class="row">
+      <div id="main">
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+  </div>
+{% endblock template %}
